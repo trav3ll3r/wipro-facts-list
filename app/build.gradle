@@ -31,17 +31,23 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
 
-// KOTLIN, ANKO
+// KOTLIN, ANKO, COROUTINES
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.0.1'
     implementation "org.jetbrains.anko:anko-sdk25:$anko_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
 }
 
 // 3rd PARTY LIBS
 dependencies {
     implementation("com.github.bumptech.glide:glide:4.8.0")
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+}
+
+// MODULES
+dependencies {
+    implementation project(":networking")
 }
 
 // TESTING
