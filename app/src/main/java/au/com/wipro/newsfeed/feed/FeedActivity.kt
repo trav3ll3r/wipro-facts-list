@@ -4,17 +4,26 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import au.com.wipro.newsfeed.R
 import au.com.wipro.newsfeed.feedlist.FeedFragment
+import dagger.android.AndroidInjection
 import org.jetbrains.anko.find
+import javax.inject.Inject
 
 
 class FeedActivity : AppCompatActivity() {
 
-    private var toolbarViewModel: ToolbarViewModel? = null
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
+    private val toolbarViewModel by lazy(LazyThreadSafetyMode.NONE) {
+        ViewModelProviders.of(this, factory).get(ToolbarViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -26,8 +35,8 @@ class FeedActivity : AppCompatActivity() {
     /* INITIALISERS */
     /* ************ */
     private fun initViewModels() {
-        toolbarViewModel = ViewModelProviders.of(this).get(ToolbarViewModel::class.java)
-        toolbarViewModel?.toolbarLiveData?.observe(this, Observer {
+        //toolbarViewModel = ViewModelProviders.of(this).get(ToolbarViewModel::class.java)
+        toolbarViewModel.toolbarLiveData.observe(this, Observer {
             setToolbarTitle(it)
         })
     }

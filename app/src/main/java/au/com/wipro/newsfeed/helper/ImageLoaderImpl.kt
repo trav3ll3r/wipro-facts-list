@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 
-class ImageLoaderImpl : ImageLoader {
+object ImageLoaderImpl : ImageLoader {
 
     override fun load(target: ImageView, href: String?) {
         val myOptions = RequestOptions()
