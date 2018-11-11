@@ -1,0 +1,11 @@
+# News Feed
+
+## Project
+* IDE: Android Studio 3.3 Beta 3
+* Android SDK Target: 25 (7.1.1 Nougat)
+  * Google Play won't allow publishing of apps/updates under target 26
+* Language: Kotlin
+* Build project using included gradle-wrapper
+
+
+## 3rd party libraries
