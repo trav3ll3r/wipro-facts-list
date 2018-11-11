@@ -16,8 +16,7 @@ class FeedEntryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         const val layoutId = R.layout.list_item_feed_entry
     }
 
-    //TODO: INJECT
-    private val imageLoader: ImageLoader = ImageLoaderImpl()
+    private val imageLoader: ImageLoader = ImageLoaderImpl
 
     private val title: TextView = itemView.find(R.id.title)
     private val description: TextView = itemView.find(R.id.description)
