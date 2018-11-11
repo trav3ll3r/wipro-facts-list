@@ -1,24 +1,21 @@
 package au.com.wipro.newsfeed.helper
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.widget.ImageView
-import au.com.wipro.newsfeed.R
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
 
 object ImageLoaderImpl : ImageLoader {
 
-    override fun load(target: ImageView, href: String?) {
+    override fun load(targetView: ImageView, href: String?) {
         val myOptions = RequestOptions()
-            .placeholder(R.drawable.ic_launcher_background) // SHOWN WHILE LOADING
-            .fallback(ColorDrawable(Color.TRANSPARENT)) // SHOWN IF LOADING RESOURCE IS NULL
-            .error(ColorDrawable(Color.TRANSPARENT))   // SHOWN IF LOADING RESOURCE ERRORS
+            .dontAnimate()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
 
-        Glide.with(target)
+        Glide.with(targetView)
             .load(href)
             .apply(myOptions)
-            .into(target)
+            .into(targetView)
     }
 }

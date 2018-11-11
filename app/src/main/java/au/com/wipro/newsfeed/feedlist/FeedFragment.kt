@@ -72,6 +72,7 @@ class FeedFragment : Fragment() {
     private fun initRecyclerView() {
         recyclerView?.setHasFixedSize(true)
         recyclerView?.layoutManager = GridLayoutManager(context, 1)
+        recyclerView?.setHasFixedSize(false)
 
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         recyclerView?.addItemDecoration(decoration)

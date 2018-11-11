@@ -6,6 +6,13 @@
     android:layout_height="wrap_content"
     android:padding="@dimen/grid_2x">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_image"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="120dp" />
+
     <!--CHEVRON-->
     <ImageView
         android:id="@+id/chevron"
@@ -31,21 +38,30 @@
     <!--IMAGE-->
     <ImageView
         android:id="@+id/image"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/MATCH_CONSTRAINTS"
         android:layout_height="wrap_content"
         android:contentDescription="@null"
+        app:layout_constraintStart_toStartOf="@id/guideline_image"
         app:layout_constraintTop_toBottomOf="@id/title"
+
         app:layout_constraintEnd_toStartOf="@id/chevron"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
-    <!--TITLE-->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="start"
+        app:constraint_referenced_ids="image" />
+
+    <!--DESCRIPTION-->
     <TextView
         android:id="@+id/description"
         style="@style/Text"
         android:layout_width="@dimen/MATCH_CONSTRAINTS"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image"
+        app:layout_constraintEnd_toStartOf="@+id/barrier_image"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="Description" />
 

@@ -1,7 +1,7 @@
 # News Feed
 
 ## Project
-* IDE: Android Studio 3.3 Beta 3
+* IDE: Android Studio 3.2.1
 * Android SDK Target: 25 (7.1.1 Nougat)
   * Google Play won't allow publishing of apps/updates under target 26
 * Language: Kotlin
