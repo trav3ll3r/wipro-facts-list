@@ -4,5 +4,5 @@ import android.widget.ImageView
 
 interface ImageLoader {
 
-    fun load(target: ImageView, href: String?)
+    fun load(targetView: ImageView, href: String?)
 }
