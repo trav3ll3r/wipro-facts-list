@@ -2,12 +2,36 @@ package au.com.wipro.newsfeed.repository
 
 import au.com.wipro.newsfeed.domain.Feed
 import au.com.wipro.newsfeed.domain.FeedEntry
+import au.com.wipro.newsfeed.networking.DropBoxDataImpl
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
 
 
 class FeedRepositoryImpl : FeedRepository {
 
     override fun get(): Feed {
-        //FIXME: RETURNS MOCK DATA UNTIL PROPER IMPLEMENTATION AVAILABLE
+        //return getMock()
+        return getReal()
+    }
+
+    /**
+     * Fetch real JSON payload from DropBox
+     */
+    private fun getReal(): Feed {
+        val feedEntries: List<FeedEntry>
+
+        val facts = runBlocking(Dispatchers.IO) { DropBoxDataImpl.facts() }
+
+        feedEntries = facts?.rows?.map { fact -> FeedEntry(fact.title, fact.description, fact.imageHref) }?.toList()
+                ?: emptyList()
+
+        return Feed(facts?.title, feedEntries)
+    }
+
+    /**
+     * Fetch mock JSON payload (based on DropBox payload)
+     */
+    private fun getMock(): Feed {
         return Feed(
             "Mock Feed", listOf(
                 FeedEntry(

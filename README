@@ -10,3 +10,6 @@
 
 ## 3rd party libraries
 * Glide
+* Gson
+* Retrofit & GsonConverter
+* Kotlin Coroutines
