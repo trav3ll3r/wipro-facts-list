@@ -5,5 +5,8 @@ import au.com.wipro.newsfeed.domain.Feed
 
 interface FeedRepository {
 
-    fun get(): Feed
+    /**
+     * Gets data for Feed
+     */
+    suspend fun get(): Feed
 }
